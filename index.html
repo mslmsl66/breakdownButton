@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <style>
+      .body-style {
+        background: url(./2077.jpg) no-repeat;
+        background-size: 100%;
+      }
+
+      .btn, .btn::after {
+        height: 86px;
+        width: 360px;
+        font-size: 30px;
+        font-family: none;
+        font-weight: 600;
+        border: 0;
+        color: #fff;
+
+        /* 居中 */
+        position: absolute;
+        left: 72%;
+        top: 80%;
+        transform: translate(-50%, -50%);
+
+        /* 左下角小块透明通过linear-gradient 45度角变色实现 */
+        background: linear-gradient(45deg, transparent 5%, red 15%);
+        /* 蓝色阴影 */
+        box-shadow: 6px 0px 0px #00e6f6;
+        /* 点击按钮不显示默认边框色 */
+        outline: transparent;
+      }
+
+      .btn:hover::after {
+        --slice-0: rect(0px, 0px, 0px, 0px);
+        --slice-1: rect(20px, 386px, 30px, 0px);
+        --slice-2: rect(40px, 386px, 50px, 0px);
+        --slice-3: rect(50px, 386px, 60px, 0px);
+        --slice-4: rect(76px, 386px, 86px, 0px);
+
+
+        content: 'AVAILABLE NOW';
+        display: block;
+        left: 0;
+        top: 0;
+        /* 内联高度 */
+        line-height: 86px;
+        /* 斜角渐变里，加一点蓝色 */
+        background: linear-gradient(45deg, transparent 3%, #00e6f6 5%, red 5%);
+        /* 文本阴影，可以添加多个，逗号相隔 */
+        text-shadow: -3px -3px 0px yellow, 3px 3px 0px #00e6f6;
+        /* 默认状态裁剪不显示，后续动画改 */
+        visibility: hidden;
+        /* 动画 执行2秒 */
+        animation: 1.6s steps(4, end) 0s infinite normal glitch;
+      }
+
+      @keyframes glitch {
+        /* translate实现视觉上的小移动 */
+        0% {
+          visibility: visible;
+          clip: var(--slice-3);
+          transform: translate(-20px, -10px);
+        }
+        
+        5% {
+          clip: var(--slice-2);
+          transform: translate(10px, 10px);
+        }
+        
+        10% {
+          clip: var(--slice-4);
+          transform: translate(-10px, 10px);
+        }
+        
+        15% {
+          clip: var(--slice-1);
+          transform: translate(0px, 0px);
+        }
+        
+        20% {
+          clip: var(--slice-4);
+          transform: translate(-5px, 0px);
+        }
+        
+        25% {
+          clip: var(--slice-3);
+          transform: translate(5px, 0px);
+        }
+        
+        30% {
+          clip: var(--slice-0);
+          transform: translate(0);
+        }
+        
+        35% {
+          clip: var(--slice-3);
+          transform: translate(-10px, 10px);
+        }
+        
+        40% {
+          clip: var(--slice-1);
+          transform: translate(20px, -10px);
+        }
+        
+        45% {
+          clip: var(--slice-2);
+          transform: translate(-10px, 0px);
+        }
+        
+        50% {
+          visibility: hidden;
+          clip: var(--slice-1);
+          transform: translate(0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="body-style"
+  >
+   <button
+    class="btn"
+  >
+    AVAILABLE NOW
+  </button>
+  </body>
+</html>
